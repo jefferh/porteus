@@ -1,4 +1,5 @@
 from __future__ import division
+import time
 import random
 import numpy as np
 
@@ -10,6 +11,8 @@ def generateP(NR, NNZ, MINP, MAXP):
     # NNZ = maximum number of non-zero elements per row
     # MINP = minimum probability in any row
     # MAXP = maximum probability in any row
+
+    start_time = time.time()
     
     P = np.zeros(shape=(NR,NR))
     numGenProb = 0
@@ -28,4 +31,5 @@ def generateP(NR, NNZ, MINP, MAXP):
             rowSum += P[i,loc]
         numGenProb = 0
         rowSum = 0 
+    print("Time to generate transition probabilities: %s seconds" % (time.time()-start_time))
     return P
