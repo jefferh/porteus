@@ -27,5 +27,5 @@ def generateP(NR, NNZ, MINP, MAXP):
                 P[i,loc] = np.random.uniform(low=MINP, high=min(MAXP,REM))
             rowSum += P[i,loc]
         numGenProb = 0
-        rowSum = 0
+        rowSum = 0 
     return P
