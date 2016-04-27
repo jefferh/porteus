@@ -1,9 +1,8 @@
-from __future__ import division
 import time
 import random
 import numpy as np
 
-# See Porteus, Evan L. "Computing the discounted return in Markov and semi-Markov chains." Naval Research Logistics Quarterly 28.4 (1981): 567-577.
+# See the appendix in Porteus, Evan L. "Computing the discounted return in Markov and semi-Markov chains." Naval Research Logistics Quarterly 28.4 (1981): 567-577.
 
 def generateP(NR, NNZ, MINP, MAXP):
     # Generate transition matrix
@@ -33,3 +32,16 @@ def generateP(NR, NNZ, MINP, MAXP):
         rowSum = 0 
     print("Time to generate transition probabilities: %s seconds" % (time.time()-start_time))
     return P
+
+def generateR(NR):
+    # Generate one-step rewards
+    # NR = number of rows (i.e. states)
+
+    R = np.zeros(shape=(NR,1))
+    for i in range(10):
+        R[i] = 10*(i+1)
+    if NR > 10:
+        for i in range(10,NR):
+            R[i] = np.random.uniform()
+        R[NR-1] = 0
+    return R
